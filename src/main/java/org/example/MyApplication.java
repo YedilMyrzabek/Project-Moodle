@@ -1,8 +1,5 @@
 package org.example;
 
-import interfaces.IUserRepository;
-
-import java.sql.ResultSet;
 import java.util.*;
 
 public class MyApplication {
@@ -38,6 +35,7 @@ public class MyApplication {
             }
             System.out.println("***************************************");
         }
+
     }
 
     public void Nextstart() {
@@ -49,7 +47,8 @@ public class MyApplication {
             System.out.println("2. Get User by ID");
             System.out.println("3. Create Student");
             System.out.println("4. Calculate GPA");
-            System.out.println("5. Delete Student By ID");
+            System.out.println("5. DeleteStudentById ");
+            System.out.println("6. Update Student");
             System.out.println("0. Exit");
             try {
                 int optioin = sc.nextInt();
@@ -62,8 +61,11 @@ public class MyApplication {
                     createUserMenu();
                 } else if (optioin == 4) {
                     GPA();
-                } else if(optioin == 5){
+                    calculateAndDisplayGPA(123);//Here 123 is the userId you want to use
+                } else if (optioin == 5) {
                     deleteStudentById();
+                } else if(optioin == 6){
+                    updateUserMenu();
                 } else {
                     break;
                 }
@@ -110,8 +112,8 @@ public class MyApplication {
         System.out.println("Student's ID: ");
         int studentID = sc.nextInt();
 
-        String responce = controller.deleteStudentById(studentID);
-        System.out.println(responce);
+        String response = controller.deleteStudentById(studentID);
+        System.out.println(response);
     }
 
     public void Log() {
@@ -120,8 +122,8 @@ public class MyApplication {
         System.out.println("Password: ");
         String userPassword = sc.next();
 
-        String responce = controller.login(userName, userPassword);
-        if (responce.equals("a")) {
+        String response = controller.login(userName, userPassword);
+        if (response.equals("a")) {
             Nextstart();
         }
     }
@@ -132,9 +134,10 @@ public class MyApplication {
         System.out.println("Password: ");
         String userPassword = sc.next();
 
-        String responce = controller.register(userName, userPassword);
-        System.out.println(responce);
+        String response = controller.register(userName, userPassword);
+        System.out.println(response);
     }
+
     public void GPA() {
         System.out.print("Number of courses: ");
         int num = sc.nextInt();
@@ -168,6 +171,31 @@ public class MyApplication {
 
         double gpa = total / num;
         System.out.printf("Your GPA is: "+ gpa+"\n");
+
+    }
+    public void updateUserMenu(){
+        System.out.println("Student's ID: ");
+        int studentId = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Student's name: ");
+        String name = sc.nextLine();
+        System.out.println("Student's surname: ");
+        String surname = sc.nextLine();
+        System.out.println("Student's gender (male/female): ");
+        Boolean gender = Boolean.valueOf(sc.nextLine());
+        System.out.println("Student's address: ");
+        String address = sc.nextLine();
+        System.out.println("Student's email: ");
+        String email = sc.nextLine();
+        System.out.println("Student's phone: ");
+        String phone = sc.nextLine();
+
+        String response = controller.updateStudentInfo(studentId, name, surname, gender, address, email, phone);
+        System.out.println(response);
+
+    }
+    public void calculateAndDisplayGPA(int userId) {
+        double gpa = controller.calculateGPA(userId);
+        System.out.println("GPA for user with ID " + userId + " is: " + gpa);
     }
 }
-

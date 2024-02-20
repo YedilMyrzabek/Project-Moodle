@@ -11,4 +11,6 @@ public interface IUserRepository {
     boolean Reg(Login login);
     User getUser(int id);
     List<User> getAllUsers();
+    boolean updateStudent(User user);
+    List<Integer> getGradesByUserId(int userId);
 }

@@ -5,6 +5,7 @@ import interfaces.IDB;
 import interfaces.IUserRepository;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -114,6 +115,8 @@ public class UserRepository implements IUserRepository {
         return false;
     }
 
+
+
     @Override
     public User getUser(int id) {
         Connection con = null;
@@ -178,4 +181,62 @@ public class UserRepository implements IUserRepository {
         }
         return null;
     }
+    @Override
+    public boolean updateStudent(User user){
+        Connection con = null;
+        try {
+            con = db.getConnection();
+            String sql = "UPDATE student SET name=?, surname=?, gender=?, address=?, email=?, phone=? WHERE id=?";
+            PreparedStatement st = con.prepareStatement(sql);
+
+            st.setString(1, user.getName());
+            st.setString(2, user.getSurname());
+            st.setBoolean(3, user.isGender());
+            st.setString(4, user.getAddress());
+            st.setString(5, user.getEmail());
+            st.setString(6, user.getPhone());
+            st.setInt(7,user.getStudentID());
+
+            int rowsUpdated = st.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception es){
+                es.printStackTrace();
+            }
+        }
+        return false;
+    }
+    @Override
+    public List<Integer> getGradesByUserId(int userId){
+        List<Integer> grades = new ArrayList<>();
+        Connection con = null;
+        try {
+            con = db.getConnection();
+            String sql = "SELECT grade FROM grades WHERE user_id = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setInt(1, userId);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int grade = rs.getInt("grade");
+                grades.add(grade);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return grades;
+    }
 }
+
+
