@@ -13,11 +13,7 @@ public class User {
     }
 
     public User(int id, String name, String surname, boolean gender,String address,String email,String phone) {
-        this(name,surname,gender,address,email,phone);
         setStudentID(id);
-    }
-
-    public User(String name, String surname, boolean gender,String address,String email,String phone) {
         setName(name);
         setSurname(surname);
         setGender(gender);
