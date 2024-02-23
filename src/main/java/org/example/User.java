@@ -22,6 +22,15 @@ public class User {
         setPhone(phone);
     }
 
+    public User(String name, String surname, boolean gender, String address, String email, String phone) {
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+    }
+
     public String getAddress() {
         return address;
     }
