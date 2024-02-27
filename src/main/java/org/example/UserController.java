@@ -87,4 +87,15 @@ public class UserController {
         boolean created = repository.setCalculus2Grade(subject, id);
         return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
     }
+    public String setForeignLanguage2Grade(int id, String mid, String end, String fin) {
+        Subject subject = new Subject(mid, end, fin);
+
+        boolean created = repository.setForeignLanguage2Grade(subject, id);
+        return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
+    }
+    public String getForeignLanguage2Grade(int id) {
+        Subject subject = repository.getForeignLanguage2Grade(id);
+        return (subject == null ? "Subject was not" : subject.toString());
+    }
+
 }

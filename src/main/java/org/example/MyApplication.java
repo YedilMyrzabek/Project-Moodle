@@ -100,6 +100,8 @@ public class MyApplication {
                     setOOPGrade();
                 } else if (optioin == 2) {
                     setCalculus2Grade();
+                } else if (optioin == 3) {
+                    setForeignLanguage2Grade();
                 } else {
                     break;
                 }
@@ -131,6 +133,8 @@ public class MyApplication {
                     getOOPGrade();
                 } else if (optioin == 3) {
                     getCalculus2Grade();
+                } else if (optioin == 4) {
+                    getForeignLanguage2Grade();
                 } else {
                     break;
                 }
@@ -178,7 +182,7 @@ public class MyApplication {
         String response =controller.getCalculus2Grade(id);
         System.out.println(response);
     }
-    public void setCalculus2Grade(){
+    public void setForeignLanguage2Grade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
         System.out.println("Midterm grade");
@@ -191,7 +195,25 @@ public class MyApplication {
         String responce = controller.setCalculus2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
+    public void getForeignLanguage2Grade(){
+        System.out.println("Please enter your id");
+        int id = sc.nextInt();
+        String response =controller.getForeignLanguage2Grade(id);
+        System.out.println(response);
+    }
+    public void setCalculus2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
 
+        String responce = controller.setForeignLanguage2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
     public void getAllUsersMenu() {
         String response = controller.getAllUsers();
         System.out.println(response);
