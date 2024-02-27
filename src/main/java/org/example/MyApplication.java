@@ -104,6 +104,8 @@ public class MyApplication {
                     setForeignLanguage2Grade();
                 } else if (optioin == 4) {
                     setPhysicalEducation2Grade();
+                } else if (optioin == 5) {
+                    setIntroductionToProgramming2Grade();
                 } else {
                     break;
                 }
@@ -139,6 +141,8 @@ public class MyApplication {
                     getForeignLanguage2Grade();
                 } else if (optioin == 5) {
                     getPhysicalEducation2Grade();
+                } else if (optioin == 6) {
+                    getIntroductionToProgramming2Grade();
                 } else {
                     break;
                 }
@@ -218,7 +222,6 @@ public class MyApplication {
         String response =controller.getForeignLanguage2Grade(id);
         System.out.println(response);
     }
-
     public void setPhysicalEducation2Grade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -238,7 +241,25 @@ public class MyApplication {
         String response =controller.getPhysicalEducation2Grade(id);
         System.out.println(response);
     }
+    public void setIntroductionToProgramming2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
 
+        String responce = controller.setIntroductionToProgramming2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getIntroductionToProgramming2Grade(){
+        System.out.println("Please enter your id");
+        int id = sc.nextInt();
+        String response =controller.getIntroductionToProgramming2Grade(id);
+        System.out.println(response);
+    }
     public void getAllUsersMenu() {
         String response = controller.getAllUsers();
         System.out.println(response);
