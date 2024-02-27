@@ -20,11 +20,13 @@ public class MyApplication {
         while (true) {
             System.out.println("1. Student");
             System.out.println("2. Teacher");
-            System.out.println();
+            System.out.println("3. Administration");
+            System.out.print("Enter option(1-3): ");
             try {
                 int optioin = sc.nextInt();
                 if (optioin == 1) {
-                    System.out.println("1. Login\n2. Register");
+                    System.out.println("1. Login");
+                    System.out.println("2. Register");
                     System.out.print("Enter option(1-2): ");
                     int optioin2 = sc.nextInt();
                     if (optioin2 == 1) {
@@ -37,12 +39,45 @@ public class MyApplication {
                 } else if (optioin == 2) {
                     System.out.println("Login");
                     LogForTeacher();
-                } else {
+                } else if (optioin == 3) {
+                    LogForAdmin();
+                }
+                else {
                     break;
                 }
                 System.out.println("\n"+"***************************************"+"\n");
             }catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("If you forget your nickname or password,\nPlease contact with Yedil Myrzabek or Akerke Sugirbek");
+            }
+        }
+    }
+    public void administration(){
+        System.out.println("Welcome to Administration");
+
+        while (true) {
+            System.out.println("1. Get All Students");
+            System.out.println("2. Get Student by ID");
+            System.out.println("3. Create Student");
+            System.out.println("4. Delete Student ");
+            System.out.println("0. Exit");
+
+            try {
+                int optioin = sc.nextInt();
+
+                if (optioin == 1) {
+                    getAllUsersMenu();
+                } else if (optioin == 2) {
+                    getUserByIdMenu();
+                } else if (optioin == 3) {
+                    createUserMenu();
+                } else if (optioin == 4) {
+                    deleteStudentById();
+                } else {
+                    break;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -53,10 +88,8 @@ public class MyApplication {
         while (true) {
             System.out.println("Main menu");
             System.out.println("1. Dashboard");
-            System.out.println("2. Get All Users");
-            System.out.println("3. Get User by ID");
-            System.out.println("4. Create Student");
-            System.out.println("5. Delete Student ");
+            System.out.println("2. Get All Logins");
+            System.out.println("3. Get Student by ID");
             System.out.println("0. Exit");
 
             try {
@@ -65,13 +98,9 @@ public class MyApplication {
                 if (optioin == 1) {
                     getDashboard();
                 } else if (optioin == 2) {
-                    getAllUsersMenu();
+                    getAllLoginsMenu();
                 } else if (optioin == 3) {
                     getUserByIdMenu();
-                } else if (optioin == 4) {
-                    createUserMenu();
-                } else if (optioin == 5) {
-                    deleteStudentById();
                 } else {
                     break;
                 }
@@ -98,6 +127,18 @@ public class MyApplication {
 
                 if (optioin == 1) {
                     setOOPGrade();
+                } else if (optioin == 7) {
+                    setCalculus2Grade();
+                } else if (optioin == 2) {
+                    setPhysicalEducation2Grade();
+                } else if (optioin == 3) {
+                    setForeignLanguage2Grade();
+                } else if (optioin == 4) {
+                    setIntroductionToProgramming2Grade();
+                } else if (optioin == 5) {
+                    setPoliticalScienceGrade();
+                } else if (optioin == 6) {
+                    setDiscreteMathematicsGrade();
                 } else {
                     break;
                 }
@@ -107,7 +148,7 @@ public class MyApplication {
             }
         }
     }
-    public void getDashboardForStudent(){
+    public void getDashboardForStudent(int id){
         while (true) {
             System.out.println("Dashboard menu");
             System.out.println("1. Calculate GPA");
@@ -126,7 +167,19 @@ public class MyApplication {
                 if (optioin == 1) {
                     GPA();
                 } else if (optioin == 2) {
-                    getOOPGrade();
+                    getOOPGrade(id);
+                } else if (optioin == 8) {
+                    getCalculus2Grade(id);
+                } else if (optioin == 3) {
+                    getPhysicalEducation2Grade(id);
+                } else if (optioin == 4) {
+                    getForeignLanguage2Grade(id);
+                } else if (optioin == 5 ) {
+                    getIntroductionToProgramming2Grade(id);
+                } else if (optioin == 6) {
+                    getPoliticalScienceGrade(id);
+                } else if (optioin == 7) {
+                    getDiscreteMathematicsGrade(id);
                 } else {
                     break;
                 }
@@ -136,28 +189,14 @@ public class MyApplication {
             }
         }
     }
-    public void getOOPGrade(){
-        System.out.println("Please enter your id");
-        int id = sc.nextInt();
-        String response =controller.getOOPGrade(id);
+    public void getOOPGrade(int id){
+        String response = controller.getOOPGrade(id);
         System.out.println(response);
     }
-    public void LogForTeacher() {
-        System.out.println("User name: ");
-        String userName = sc.next();
-        System.out.println("Password: ");
-        String userPassword = sc.next();
-
-        String responce = controller.loginForTeacher(userName, userPassword);
-        if (responce.equals("a")) {
-            Nextstart();
-        }else {
-            System.out.println("Invalid Name or Password");
-        }
-    }
-    public void setOOPGrade(){
+    public void setOOPGrade( ){
         System.out.println("Student ID");
         int id = sc.nextInt();
+
         System.out.println("Midterm grade");
         String midka = sc.next();
         System.out.println("Endterm grade");
@@ -168,10 +207,140 @@ public class MyApplication {
         String responce = controller.setOOPGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
+    public void getCalculus2Grade(int id){
+        String response =controller.getCalculus2Grade(id);
+        System.out.println(response);
+    }
+    public void setCalculus2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+
+        String responce = controller.setCalculus2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void setForeignLanguage2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+        String responce = controller.setForeignLanguage2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getForeignLanguage2Grade(int id){
+        String response =controller.getForeignLanguage2Grade(id);
+        System.out.println(response);
+    }
+    public void setPhysicalEducation2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+        String responce = controller.setPhysicalEducation2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getPhysicalEducation2Grade(int id){
+        String response =controller.getPhysicalEducation2Grade(id);
+        System.out.println(response);
+    }
+    public void setIntroductionToProgramming2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+        String responce = controller.setIntroductionToProgramming2Grade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getIntroductionToProgramming2Grade(int id){
+        String response =controller.getIntroductionToProgramming2Grade(id);
+        System.out.println(response);
+    }
+    public void setPoliticalScienceGrade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+        String responce = controller.setPoliticalScienceGrade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getPoliticalScienceGrade(int id){
+        String response =controller.getPoliticalScienceGrade(id);
+        System.out.println(response);
+    }
+    public void setDiscreteMathematicsGrade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+
+        String responce = controller.setDiscreteMathematicsGrade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getDiscreteMathematicsGrade(int id){
+        String response =controller.getDiscreteMathematicsGrade(id);
+        System.out.println(response);
+    }
+    public void LogForTeacher() {
+        System.out.println("User name: ");
+        String userName = sc.next();
+        System.out.println("Password: ");
+        String userPassword = sc.next();
+
+        boolean responce = controller.loginForTeacher(userName, userPassword);
+        if (responce) {
+            Nextstart();
+        }else {
+            System.out.println("Invalid Name or Password");
+        }
+    }
+    public void LogForAdmin(){
+        System.out.println("User name: ");
+        String userName = sc.next();
+        System.out.println("Password: ");
+        String userPassword = sc.next();
+
+        int id = Integer.parseInt(userPassword);
+
+        boolean responce = controller.loginForAdmin(userName, userPassword);
+        if (responce) {
+            administration();
+        }else {
+            System.out.println("Invalid Name or Password");
+        }
+    }
 
     public void getAllUsersMenu() {
         String response = controller.getAllUsers();
         System.out.println(response);
+    }
+    public void getAllLoginsMenu(){
+        String responce = controller.getAllLogin();
+        System.out.println(responce);
     }
 
     public void getUserByIdMenu() {
@@ -182,6 +351,8 @@ public class MyApplication {
     }
 
     public void createUserMenu() {
+        System.out.println("Student's ID");
+        int id = sc.nextInt();
         System.out.println("Student's name: ");
         String studentName = sc.next();
         System.out.println("Student's surname: ");
@@ -196,7 +367,7 @@ public class MyApplication {
         String studentPhone = sc.next();
 
 
-        String response = controller.createStudent(studentName, studentSurname, studentGender, studentAddress, studentEmail, studentPhone);
+        String response = controller.createStudent(id, studentName, studentSurname, studentGender, studentAddress, studentEmail, studentPhone);
         System.out.println(response);
     }
     public void deleteStudentById(){
@@ -208,25 +379,38 @@ public class MyApplication {
     }
 
     public void Log() {
-        System.out.println("User name: ");
+        System.out.println("Nickname: ");
         String userName = sc.next();
         System.out.println("Password: ");
         String userPassword = sc.next();
 
-        String responce = controller.login(userName, userPassword);
-        if (responce.equals("a")) {
-            getDashboardForStudent();
+        int id = Integer.parseInt(userPassword);
+
+        boolean responce = controller.login(userName, userPassword);
+
+        if (!responce) {
+            System.out.println("Yedil Myrzabek");
+        }else {
+            getDashboardForStudent(id);
         }
-    }
 
+
+    }
     public void Reg() {
-        System.out.println("User name: ");
+        System.out.println("Create nickname: ");
         String userName = sc.next();
-        System.out.println("Password: ");
+        System.out.println("Create password: ");
         String userPassword = sc.next();
 
-        String responce = controller.register(userName, userPassword);
-        System.out.println(responce);
+        boolean testReg = controller.testReg(userName,userPassword);
+        if(testReg) {
+            System.out.println("User already exists");
+            System.out.println("Change nickname or password");
+        }else {
+            String responce = controller.register(userName, userPassword);
+            System.out.println(responce);
+        }
+
     }
     public void GPA() {
         System.out.print("Number of courses: ");
