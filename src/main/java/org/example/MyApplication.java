@@ -98,6 +98,8 @@ public class MyApplication {
 
                 if (optioin == 1) {
                     setOOPGrade();
+                } else if (optioin == 2) {
+                    setCalculus2Grade();
                 } else {
                     break;
                 }
@@ -127,6 +129,8 @@ public class MyApplication {
                     GPA();
                 } else if (optioin == 2) {
                     getOOPGrade();
+                } else if (optioin == 3) {
+                    getCalculus2Grade();
                 } else {
                     break;
                 }
@@ -166,6 +170,25 @@ public class MyApplication {
         String fin = sc.next();
 
         String responce = controller.setOOPGrade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getCalculus2Grade(){
+        System.out.println("Please enter your id");
+        int id = sc.nextInt();
+        String response =controller.getCalculus2Grade(id);
+        System.out.println(response);
+    }
+    public void setCalculus2Grade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+
+        String responce = controller.setCalculus2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
 

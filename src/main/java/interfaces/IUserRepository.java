@@ -23,6 +23,8 @@ public interface IUserRepository {
     Subject getOOPGrade(int id);
 
     boolean setOOPGrade(Subject subject, int id);
-
+    Subject getCalculus2Grade(int id);
+    boolean setCalculus2Grade(Subject subject, int id);
     List<User> getAllUsers();
+
 }
