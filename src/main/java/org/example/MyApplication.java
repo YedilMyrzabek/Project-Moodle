@@ -110,6 +110,7 @@ public class MyApplication {
             }
         }
     }
+
     public void getDashboard(){
         while (true) {
             System.out.println("Dashboard menu");
