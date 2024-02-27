@@ -535,6 +535,68 @@ public class UserRepository implements IUserRepository {
 
         return null;
     }
+    public boolean setPoliticalScienceGrade(Subject subject,int id) {
+        Connection con = null;
+        try {
+            con = db.getConnection();
+
+            String sql = "UPDATE PoliticalScience SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+
+            st.setString(1, subject.getMidterm());
+            st.setString(2, subject.getEndterm());
+            st.setString(3, subject.getFianll());
+            st.setInt(4,id);
+
+            st.execute();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (Exception es) {
+                es.printStackTrace();
+            }
+        }
+        return false;
+    }
+    public Subject getPoliticalScienceGrade(int id) {
+        Connection con = null;
+        try {
+            con = db.getConnection();
+            String sql = "SELECT midterm,endterm,final FROM PoliticalScience WHERE id = ?";
+            PreparedStatement st = con.prepareStatement(sql);
+
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int mid = Integer.parseInt(rs.getString("midterm"));
+                int end = Integer.parseInt(rs.getString("endterm"));
+                int fin = Integer.parseInt(rs.getString("final"));
+
+                Subject subject = new Subject(
+                        rs.getString("midterm"),
+                        rs.getString("endterm"),
+                        rs.getString("final"),
+                        calTotal(mid, end, fin));
+                return subject;
+            }
+        } catch (Exception e) {
+            System.out.println("");
+        } finally {
+
+            try {
+                con.close();
+            } catch (Exception es) {
+                System.out.println("");;
+            }
+        }
+
+        return null;
+    }
     public String calTotal(int mid, int end, int fin) {
         double total = (double) ((mid + end) / 2) * 0.6 + fin * 0.4;
         String s = Double.toString(total);

@@ -37,6 +37,9 @@ public interface IUserRepository {
     Subject getIntroductionToProgramming2Grade(int id);
 
     boolean setIntroductionToProgramming2Grade(Subject subject, int id);
+    Subject getPoliticalScienceGrade(int id);
+
+    boolean setPoliticalScienceGrade(Subject subject, int id);
     List<User> getAllUsers();
 
 }

@@ -117,4 +117,14 @@ public class UserController {
         Subject subject = repository.getIntroductionToProgramming2Grade(id);
         return (subject == null ? "Subject was not" : subject.toString());
     }
+    public String setPoliticalScienceGrade(int id, String mid, String end, String fin) {
+        Subject subject = new Subject(mid, end, fin);
+
+        boolean created = repository.setPoliticalScienceGrade(subject, id);
+        return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
+    }
+    public String getPoliticalScienceGrade(int id) {
+        Subject subject = repository.getPoliticalScienceGrade(id);
+        return (subject == null ? "Subject was not" : subject.toString());
+    }
 }
