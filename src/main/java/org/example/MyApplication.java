@@ -108,6 +108,8 @@ public class MyApplication {
                     setIntroductionToProgramming2Grade();
                 } else if (optioin == 6) {
                     setPoliticalScienceGrade();
+                } else if (optioin == 7) {
+                    setDiscreteMathematicsGrade();
                 } else {
                     break;
                 }
@@ -147,6 +149,8 @@ public class MyApplication {
                     getIntroductionToProgramming2Grade();
                 } else if (optioin == 7) {
                     getPoliticalScienceGrade();
+                } else if (optioin == 8) {
+                    getDiscreteMathematicsGrade();
                 } else {
                     break;
                 }
@@ -281,6 +285,25 @@ public class MyApplication {
         System.out.println("Please enter your id");
         int id = sc.nextInt();
         String response =controller.getPoliticalScienceGrade(id);
+        System.out.println(response);
+    }
+    public void setDiscreteMathematicsGrade(){
+        System.out.println("Student ID");
+        int id = sc.nextInt();
+        System.out.println("Midterm grade");
+        String midka = sc.next();
+        System.out.println("Endterm grade");
+        String endka = sc.next();
+        System.out.println("Final grade");
+        String fin = sc.next();
+
+        String responce = controller.setDiscreteMathematicsGrade(id,midka,endka,fin);
+        System.out.println(responce);
+    }
+    public void getDiscreteMathematicsGrade(){
+        System.out.println("Please enter your id");
+        int id = sc.nextInt();
+        String response =controller.getDiscreteMathematicsGrade(id);
         System.out.println(response);
     }
     public void getAllUsersMenu() {
