@@ -97,5 +97,14 @@ public class UserController {
         Subject subject = repository.getForeignLanguage2Grade(id);
         return (subject == null ? "Subject was not" : subject.toString());
     }
+    public String setPhysicalEducation2Grade(int id, String mid, String end, String fin) {
+        Subject subject = new Subject(mid, end, fin);
 
+        boolean created = repository.setPhysicalEducation2Grade(subject, id);
+        return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
+    }
+    public String getPhysicalEducation2Grade(int id) {
+        Subject subject = repository.getPhysicalEducation2Grade(id);
+        return (subject == null ? "Subject was not" : subject.toString());
+    }
 }

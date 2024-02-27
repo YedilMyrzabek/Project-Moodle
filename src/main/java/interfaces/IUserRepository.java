@@ -31,6 +31,9 @@ public interface IUserRepository {
     Subject getForeignLanguage2Grade(int id);
 
     boolean setForeignLanguage2Grade(Subject subject, int id);
+    Subject getPhysicalEducation2Grade(int id);
+
+    boolean setPhysicalEducation2Grade(Subject subject, int id);
 
     List<User> getAllUsers();
 
