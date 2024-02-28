@@ -1,5 +1,17 @@
 package org.example;
 
+import lombok.*;
+
+import javax.swing.*;
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
+@ToString
 public class User {
     private int id;
     private String name;

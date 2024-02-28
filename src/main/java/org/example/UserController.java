@@ -14,9 +14,6 @@ public class UserController {
     public String createStudent(int id,String name, String surname, String gender, String address, String email, String phone) {
         boolean male = (gender.toLowerCase().equals("male"));
 
-        Random ran = new Random();
-        int first4 = (int) Math.abs((ran.nextLong() % 9000) + 1000);
-
         User user = new User(name, surname, male, address, email, phone);
         boolean created = repository.createStudent(user,id);
 
@@ -30,7 +27,7 @@ public class UserController {
 
     public String deleteStudentById(int id) {
         boolean created = repository.deleteStudentById(id);
-        return (created ? "Student was deleted" : "Invalid ID");
+        return (created ? "Invalid ID" : "Student was deleted");
     }
 
     public boolean login(String name, String password) {
@@ -51,9 +48,7 @@ public class UserController {
         Login login = new Login(name, password);
 
         return repository.loginForAdmin(login);
-
     }
-
     public String register(String name, String password) {
         Login login = new Login(name, password);
 
@@ -88,7 +83,7 @@ public class UserController {
         return (subject == null ? "Teacher did't paste grade": subject.toString());
     }
 
-    public String setOOPGrade(int id, String mid, String end, String fin) {
+    public String setOOPGrade(int id, int mid, int end, int fin) {
         Subject subject = new Subject(mid, end, fin);
 
         boolean created = repository.setOOPGrade(subject, id);
@@ -99,31 +94,13 @@ public class UserController {
         Subject subject = repository.getCalculus2Grade(id);
         return (subject == null ? "Subject was not" : subject.toString());
     }
-    public String setCalculus2Grade(int id, String mid, String end, String fin) {
+    public String setCalculus2Grade(int id, int mid, int end, int fin) {
         Subject subject = new Subject(mid, end, fin);
 
         boolean created = repository.setCalculus2Grade(subject, id);
         return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
     }
-    public String setForeignLanguage2Grade(int id, String mid, String end, String fin) {
-        Subject subject = new Subject(mid, end, fin);
-        boolean created = repository.setForeignLanguage2Grade(subject, id);
-        return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
-    }
-    public String getForeignLanguage2Grade(int id) {
-        Subject subject = repository.getForeignLanguage2Grade(id);
-        return (subject == null ? "Subject was not" : subject.toString());
-    }
-    public String setPhysicalEducation2Grade(int id, String mid, String end, String fin) {
-        Subject subject = new Subject(mid, end, fin);
-        boolean created = repository.setPhysicalEducation2Grade(subject, id);
-        return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
-    }
-    public String getPhysicalEducation2Grade(int id) {
-        Subject subject = repository.getPhysicalEducation2Grade(id);
-        return (subject == null ? "Subject was not" : subject.toString());
-    }
-    public String setIntroductionToProgramming2Grade(int id, String mid, String end, String fin) {
+    public String setIntroductionToProgramming2Grade(int id, int mid, int end, int fin) {
         Subject subject = new Subject(mid, end, fin);
         boolean created = repository.setIntroductionToProgramming2Grade(subject, id);
         return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
@@ -132,7 +109,7 @@ public class UserController {
         Subject subject = repository.getIntroductionToProgramming2Grade(id);
         return (subject == null ? "Subject was not" : subject.toString());
     }
-    public String setPoliticalScienceGrade(int id, String mid, String end, String fin) {
+    public String setPoliticalScienceGrade(int id, int mid, int end, int fin) {
         Subject subject = new Subject(mid, end, fin);
         boolean created = repository.setPoliticalScienceGrade(subject, id);
         return (created ? "Subject Details Inserted Successfully" : "ERRORRRRRR");
@@ -141,7 +118,7 @@ public class UserController {
         Subject subject = repository.getPoliticalScienceGrade(id);
         return (subject == null ? "Subject was not" : subject.toString());
     }
-    public String setDiscreteMathematicsGrade(int id, String mid, String end, String fin) {
+    public String setDiscreteMathematicsGrade(int id, int mid, int end, int fin) {
         Subject subject = new Subject(mid, end, fin);
 
         boolean created = repository.setDiscreteMathematicsGrade(subject, id);

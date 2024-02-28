@@ -1,8 +1,5 @@
 package org.example;
 
-import javax.swing.*;
-import java.sql.ResultSet;
-
 public class Login {
     private String name;
     private String password;

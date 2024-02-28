@@ -10,5 +10,6 @@ public class Main {
         UserController controller = new UserController(repo);
         MyApplication app = new MyApplication(controller);
         app.start();
+
     }
 }

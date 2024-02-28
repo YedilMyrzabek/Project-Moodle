@@ -27,10 +27,6 @@ public interface IUserRepository {
     boolean setOOPGrade(Subject subject, int id);
     Subject getCalculus2Grade(int id);
     boolean setCalculus2Grade(Subject subject, int id);
-    Subject getForeignLanguage2Grade(int id);
-    boolean setForeignLanguage2Grade(Subject subject, int id);
-    Subject getPhysicalEducation2Grade(int id);
-    boolean setPhysicalEducation2Grade(Subject subject, int id);
     Subject getIntroductionToProgramming2Grade(int id);
 
     boolean setIntroductionToProgramming2Grade(Subject subject, int id);
