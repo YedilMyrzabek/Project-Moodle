@@ -1,4 +1,6 @@
-package org.example;
+package org.example.resources;
+import org.example.controllers.UserController;
+
 import java.util.*;
 
 public class MyApplication {

@@ -1,4 +1,4 @@
-package org.example;
+package interfaces.DB;
 
 import interfaces.IDB;
 

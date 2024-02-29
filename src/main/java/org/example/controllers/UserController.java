@@ -1,6 +1,9 @@
-package org.example;
+package org.example.controllers;
 
 import interfaces.IUserRepository;
+import org.example.models.Login;
+import org.example.models.Subject;
+import org.example.models.User;
 
 import java.util.*;
 

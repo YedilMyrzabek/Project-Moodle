@@ -1,7 +1,10 @@
-package org.example;
+package org.example.resources;
 
 import interfaces.IDB;
 import interfaces.IUserRepository;
+import interfaces.DB.PostgresDB;
+import org.example.controllers.UserController;
+import org.example.repositories.UserRepository;
 
 public class Main {
     public static void main(String[] args) {

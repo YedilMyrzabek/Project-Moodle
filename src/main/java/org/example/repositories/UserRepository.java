@@ -1,10 +1,13 @@
-package org.example;
+package org.example.repositories;
 
 import interfaces.IDB;
 import interfaces.IUserRepository;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.models.Login;
+import org.example.models.Subject;
+import org.example.models.User;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -21,7 +24,7 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public boolean createStudent(User user,int id) {
+    public boolean createStudent(User user, int id) {
         try (Connection con = db.getConnection()){
             String sql = "UPDATE student SET name = ?, surname = ?, gender = ?,address = ?,email = ?, phone = ?   WHERE id = ?";
             PreparedStatement st = con.prepareStatement(sql);
@@ -238,7 +241,7 @@ public class UserRepository implements IUserRepository {
         return false;
     }
 
-    public boolean setOOPGrade(Subject subject,int id) {
+    public boolean setOOPGrade(Subject subject, int id) {
         try(Connection con = db.getConnection()) {
             String sql = "UPDATE oop SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
             PreparedStatement st = con.prepareStatement(sql);

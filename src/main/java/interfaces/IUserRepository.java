@@ -1,7 +1,7 @@
 package interfaces;
-import org.example.Login;
-import org.example.Subject;
-import org.example.User;
+import org.example.models.Login;
+import org.example.models.Subject;
+import org.example.models.User;
 
 import java.util.List;
 
