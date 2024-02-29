@@ -22,24 +22,6 @@ public interface IUserRepository {
     User getUser(int id);
     boolean testReg(Login login);
 
-    Subject getOOPGrade(int id);
-
-    boolean setOOPGrade(Subject subject, int id);
-    Subject getCalculus2Grade(int id);
-    boolean setCalculus2Grade(Subject subject, int id);
-    Subject getIntroductionToProgramming2Grade(int id);
-
-    boolean setIntroductionToProgramming2Grade(Subject subject, int id);
-
-    Subject getPoliticalScienceGrade(int id);
-
-    boolean setPoliticalScienceGrade(Subject subject, int id);
-
-    Subject getDiscreteMathematicsGrade(int id);
-
-    boolean setDiscreteMathematicsGrade(Subject subject, int id);
-
-
     List<User> getAllUsers();
     List<Login> getAllLogin();
 }
