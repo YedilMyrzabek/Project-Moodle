@@ -16,6 +16,7 @@ public class MyApplication {
         this.subjectController = subjectController;
         sc = new Scanner(System.in);
     }
+
     public void start() {
         System.out.println("Welcome to University");
 
@@ -55,6 +56,7 @@ public class MyApplication {
             }
         }
     }
+
     public void administration(){
         System.out.println("Welcome to Administration");
 
@@ -147,6 +149,7 @@ public class MyApplication {
             }
         }
     }
+
     public void getDashboardForStudent(int id){
         while (true) {
             System.out.println("Dashboard menu");
@@ -182,10 +185,12 @@ public class MyApplication {
             }
         }
     }
+
     public void getOOPGrade(int id){
         String response = subjectController.getOOPGrade(id);
         System.out.println(response);
     }
+
     public void setOOPGrade( ){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -200,10 +205,12 @@ public class MyApplication {
         String responce = subjectController.setOOPGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
+
     public void getCalculus2Grade(int id){
         String response =subjectController.getCalculus2Grade(id);
         System.out.println(response);
     }
+
     public void setCalculus2Grade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -217,6 +224,7 @@ public class MyApplication {
         String responce = subjectController.setCalculus2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
+
     public void setIntroductionToProgramming2Grade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -230,10 +238,12 @@ public class MyApplication {
         String responce = subjectController.setIntroductionToProgramming2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
+
     public void getIntroductionToProgramming2Grade(int id){
         String response =subjectController.getIntroductionToProgramming2Grade(id);
         System.out.println(response);
     }
+
     public void setPoliticalScienceGrade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -247,10 +257,12 @@ public class MyApplication {
         String responce = subjectController.setPoliticalScienceGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
+
     public void getPoliticalScienceGrade(int id){
         String response =subjectController.getPoliticalScienceGrade(id);
         System.out.println(response);
     }
+
     public void setDiscreteMathematicsGrade(){
         System.out.println("Student ID");
         int id = sc.nextInt();
@@ -264,14 +276,17 @@ public class MyApplication {
         String responce = subjectController.setDiscreteMathematicsGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
+
     public void getDiscreteMathematicsGrade(int id){
         String response =subjectController.getDiscreteMathematicsGrade(id);
         System.out.println(response);
     }
+
     public void getAllUsersMenu() {
         String response = controller.getAllUsers();
         System.out.println(response);
     }
+
     public void getAllLoginsMenu(){
         String responce = controller.getAllLogin();
         System.out.println(responce);
@@ -304,6 +319,7 @@ public class MyApplication {
         String response = controller.createStudent(id, studentName, studentSurname, studentGender, studentAddress, studentEmail, studentPhone);
         System.out.println(response);
     }
+
     public void deleteStudentById(){
         System.out.println("Student's ID: ");
         int studentID = sc.nextInt();
@@ -328,6 +344,7 @@ public class MyApplication {
             getDashboardForStudent(id);
         }
     }
+
     public void Reg() {
         System.out.println("Create nickname: ");
         String userName = sc.next();

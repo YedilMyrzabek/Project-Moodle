@@ -8,6 +8,7 @@ import interfaces.ISubjectRepository;
 import org.example.controllers.LoginController;
 import org.example.controllers.SubjectController;
 import org.example.controllers.UserController;
+import org.example.models.Subject;
 import org.example.repositories.LoginRepository;
 import org.example.repositories.SubjectRepository;
 import org.example.repositories.UserRepository;
@@ -23,6 +24,5 @@ public class Main {
         SubjectController subjectController = new SubjectController(subRepo);
         MyApplication app = new MyApplication(controller,loginController,subjectController);
         app.start();
-
     }
 }

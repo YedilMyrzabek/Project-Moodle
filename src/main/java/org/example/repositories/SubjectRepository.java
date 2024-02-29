@@ -13,6 +13,7 @@ public class SubjectRepository implements ISubjectRepository {
     public SubjectRepository(IDB db) {
         this.db = db;
     }
+    @Override
     public boolean setOOPGrade(Subject subject, int id) {
         try(Connection con = db.getConnection()) {
             String sql = "UPDATE oop SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
@@ -30,6 +31,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return false;
     }
+
+    @Override
     public Subject getOOPGrade(int id) {
         try(Connection con = db.getConnection()) {
             String sql = "SELECT midterm,endterm,final FROM oop WHERE id = ?";
@@ -49,6 +52,7 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return null;
     }
+
     @Override
     public boolean setCalculus2Grade(Subject subject,int id) {
         try (Connection con = db.getConnection()){
@@ -67,6 +71,7 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return false;
     }
+
     @Override
     public Subject getCalculus2Grade(int id) {
         try(Connection con = db.getConnection()) {
@@ -87,6 +92,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return null;
     }
+
+    @Override
     public boolean setIntroductionToProgramming2Grade(Subject subject,int id) {
         try(Connection con = db.getConnection()) {
             String sql = "UPDATE itp2 SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
@@ -103,6 +110,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return false;
     }
+
+    @Override
     public Subject getIntroductionToProgramming2Grade(int id) {
         try (Connection con = db.getConnection()){
             String sql = "SELECT midterm,endterm,final FROM itp2 WHERE id = ?";
@@ -122,6 +131,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return null;
     }
+
+    @Override
     public boolean setPoliticalScienceGrade(Subject subject,int id) {
         try(Connection con = db.getConnection()) {
             String sql = "UPDATE ps SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
@@ -138,6 +149,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return false;
     }
+
+    @Override
     public Subject getPoliticalScienceGrade(int id) {
         try (Connection con = db.getConnection()){
             String sql = "SELECT midterm,endterm,final FROM ps WHERE id = ?";
@@ -157,6 +170,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return null;
     }
+
+    @Override
     public boolean setDiscreteMathematicsGrade(Subject subject,int id) {
         try (Connection con = db.getConnection()){
             String sql = "UPDATE dm SET midterm = ?, endterm = ?, final = ?   WHERE id = ?";
@@ -174,6 +189,8 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return false;
     }
+
+    @Override
     public Subject getDiscreteMathematicsGrade(int id) {
         try (Connection con = db.getConnection()){
             String sql = "SELECT midterm,endterm,final FROM dm WHERE id = ?";
@@ -193,6 +210,7 @@ public class SubjectRepository implements ISubjectRepository {
         }
         return null;
     }
+
     public int calTotal(int mid, int end, int fin) {
         double total = (double) ((mid + end) / 2) * 0.6 + fin * 0.4;
         return  (int) (total);

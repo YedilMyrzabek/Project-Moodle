@@ -2,20 +2,11 @@ package org.example.repositories;
 
 import interfaces.IDB;
 import interfaces.IUserRepository;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import org.example.controllers.LoginController;
 import org.example.models.Login;
-import org.example.models.Subject;
 import org.example.models.User;
-
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
-@Getter
-@Setter
-@Data
 
 public class UserRepository implements IUserRepository {
     private final IDB db;
@@ -45,6 +36,7 @@ public class UserRepository implements IUserRepository {
         }
         return false;
     }
+
     @Override
     public User getUser(int id) {
         try (Connection con = db.getConnection()){
@@ -67,6 +59,7 @@ public class UserRepository implements IUserRepository {
         }
         return null;
     }
+
     @Override
     public List<User> getAllUsers() {
         try (Connection con = db.getConnection()){

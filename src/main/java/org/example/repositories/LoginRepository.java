@@ -3,7 +3,6 @@ package org.example.repositories;
 import interfaces.IDB;
 import interfaces.ILoginRepository;
 import org.example.models.Login;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,10 +10,11 @@ import java.sql.Statement;
 
 public class LoginRepository implements ILoginRepository {
     private final IDB db;
-
     public LoginRepository(IDB db) {
         this.db = db;
     }
+
+    @Override
     public boolean login(Login login){
         try (Connection con = db.getConnection()){
             String query = "select * from login where name='"+login.getName()+"' and password='"+login.getPassword()+"'";
@@ -27,6 +27,8 @@ public class LoginRepository implements ILoginRepository {
         }
         return false;
     }
+
+    @Override
     public boolean deleteStudentById(int id) {
         try (Connection con = db.getConnection()){
             String sql = "delete from student where id = '"+id+"'";
@@ -41,6 +43,7 @@ public class LoginRepository implements ILoginRepository {
         return false;
     }
 
+    @Override
     public boolean Reg(Login login){
         try(Connection con = db.getConnection()) {
             String sql = "INSERT INTO login(name,password) VALUES(?,?)";
@@ -55,6 +58,7 @@ public class LoginRepository implements ILoginRepository {
         }
         return false;
     }
+
     @Override
     public boolean loginForTeacher(Login login) {
         try (Connection con = db.getConnection()){
@@ -95,5 +99,4 @@ public class LoginRepository implements ILoginRepository {
         }
         return false;
     }
-
 }

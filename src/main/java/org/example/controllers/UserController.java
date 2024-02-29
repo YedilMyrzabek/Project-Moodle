@@ -2,7 +2,6 @@ package org.example.controllers;
 
 import interfaces.IUserRepository;
 import org.example.models.Login;
-import org.example.models.Subject;
 import org.example.models.User;
 
 import java.util.*;
@@ -27,10 +26,12 @@ public class UserController {
        repository.creaeIdForStudent(id);
        return null;
     }
+
     public String getAllUsers() {
         List<User> users = repository.getAllUsers();
         return users.toString();
     }
+
     public String getAllLogin(){
         List<Login> logins = repository.getAllLogin();
         return logins.toString();

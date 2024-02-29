@@ -2,8 +2,6 @@ package org.example.models;
 
 import lombok.*;
 
-import javax.swing.*;
-
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -21,7 +19,6 @@ public class User {
     private String email;
     private String phone;
     public User(){
-
     }
 
     public User(int id, String name, String surname, boolean gender,String address,String email,String phone) {

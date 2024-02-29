@@ -3,6 +3,7 @@ package org.example.models;
 import lombok.*;
 @Getter
 @Setter
+@AllArgsConstructor
 public class Subject {
     private int midterm;
     private int endterm;
