@@ -51,7 +51,7 @@ public class MyApplication {
             }catch (InputMismatchException e){
                 System.out.println("Input must be integer");
             } catch (Exception e) {
-                System.out.println("If you forget your nickname or password,\nPlease contact with Yedil Myrzabek or Akerke Sugirbek");
+                e.printStackTrace();
             }
         }
     }
@@ -268,33 +268,6 @@ public class MyApplication {
         String response =subjectController.getDiscreteMathematicsGrade(id);
         System.out.println(response);
     }
-    public void LogForTeacher() {
-        System.out.println("User name: ");
-        String userName = sc.next();
-        System.out.println("Password: ");
-        String userPassword = sc.next();
-
-        boolean responce = loginController.loginForTeacher(userName, userPassword);
-        if (responce) {
-            Nextstart();
-        }else {
-            System.out.println("Invalid Name or Password");
-        }
-    }
-    public void LogForAdmin(){
-        System.out.println("User name: ");
-        String userName = sc.next();
-        System.out.println("Password: ");
-        String userPassword = sc.next();
-
-        boolean responce = loginController.loginForAdmin(userName, userPassword);
-        if (responce) {
-            administration();
-        }else {
-            System.out.println("Invalid Name or Password");
-        }
-    }
-
     public void getAllUsersMenu() {
         String response = controller.getAllUsers();
         System.out.println(response);
@@ -350,12 +323,10 @@ public class MyApplication {
         boolean responce = loginController.login(userName, userPassword);
 
         if (!responce) {
-            System.out.println("Yedil Myrzabek");
+            System.out.println("If you forget your nickname or password,\nPlease contact with Yedil Myrzabek or Akerke Sugirbek");
         }else {
             getDashboardForStudent(id);
         }
-
-
     }
     public void Reg() {
         System.out.println("Create nickname: ");
@@ -371,7 +342,32 @@ public class MyApplication {
             String responce = loginController.register(userName, userPassword);
             System.out.println(responce);
         }
+    }
+    public void LogForTeacher() {
+        System.out.println("User name: ");
+        String userName = sc.next();
+        System.out.println("Password: ");
+        String userPassword = sc.next();
 
+        boolean responce = loginController.loginForTeacher(userName, userPassword);
+        if (responce) {
+            Nextstart();
+        }else {
+            System.out.println("Invalid Name or Password");
+        }
+    }
+    public void LogForAdmin(){
+        System.out.println("User name: ");
+        String userName = sc.next();
+        System.out.println("Password: ");
+        String userPassword = sc.next();
+
+        boolean responce = loginController.loginForAdmin(userName, userPassword);
+        if (responce) {
+            administration();
+        }else {
+            System.out.println("Invalid Name or Password");
+        }
     }
     public void GPA() {
         System.out.print("Number of courses: ");
