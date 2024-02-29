@@ -335,7 +335,7 @@ public class MyApplication {
         System.out.println("Student's ID: ");
         int studentID = sc.nextInt();
 
-        String responce = controller.deleteStudentById(studentID);
+        String responce = loginController.deleteStudentById(studentID);
         System.out.println(responce);
     }
 

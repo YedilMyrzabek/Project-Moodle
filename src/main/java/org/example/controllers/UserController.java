@@ -27,11 +27,6 @@ public class UserController {
        repository.creaeIdForStudent(id);
        return null;
     }
-
-    public String deleteStudentById(int id) {
-        boolean created = repository.deleteStudentById(id);
-        return (created ? "Invalid ID" : "Student was deleted");
-    }
     public String getAllUsers() {
         List<User> users = repository.getAllUsers();
         return users.toString();

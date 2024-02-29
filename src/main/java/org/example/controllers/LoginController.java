@@ -1,15 +1,20 @@
 package org.example.controllers;
 
+import interfaces.ILoginRepository;
 import interfaces.IUserRepository;
 import org.example.models.Login;
 
 public class LoginController {
-    private final IUserRepository repository;
+    private final ILoginRepository repository;
     public String register(String name, String password) {
         Login login = new Login(name, password);
 
         boolean created = repository.Reg(login);
         return (created ? "User Details Inserted Successfully" : "User Not Inserted");
+    }
+    public String deleteStudentById(int id) {
+        boolean created = repository.deleteStudentById(id);
+        return (created ? "Invalid ID" : "Student was deleted");
     }
     public boolean login(String name, String password) {
         Login login = new Login(name, password);
@@ -17,7 +22,7 @@ public class LoginController {
         return repository.login(login);
     }
 
-    public LoginController(IUserRepository repository) {
+    public LoginController(ILoginRepository repository) {
         this.repository = repository;
     }
 
