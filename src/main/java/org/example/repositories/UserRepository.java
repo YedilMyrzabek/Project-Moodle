@@ -5,6 +5,7 @@ import interfaces.IUserRepository;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.example.controllers.LoginController;
 import org.example.models.Login;
 import org.example.models.Subject;
 import org.example.models.User;

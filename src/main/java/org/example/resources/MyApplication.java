@@ -1,13 +1,19 @@
 package org.example.resources;
+import org.example.controllers.LoginController;
+import org.example.controllers.SubjectController;
 import org.example.controllers.UserController;
 
 import java.util.*;
 
 public class MyApplication {
     private final UserController controller;
+    private final LoginController loginController;
+    private final SubjectController subjectController;
     Scanner sc;
-    public MyApplication(UserController controller) {
+    public MyApplication(UserController controller, LoginController loginController, SubjectController subjectController) {
         this.controller = controller;
+        this.loginController = loginController;
+        this.subjectController = subjectController;
         sc = new Scanner(System.in);
     }
     public void start() {
@@ -177,7 +183,7 @@ public class MyApplication {
         }
     }
     public void getOOPGrade(int id){
-        String response = controller.getOOPGrade(id);
+        String response = subjectController.getOOPGrade(id);
         System.out.println(response);
     }
     public void setOOPGrade( ){
@@ -191,11 +197,11 @@ public class MyApplication {
         System.out.println("Final grade");
         int fin = sc.nextInt();
 
-        String responce = controller.setOOPGrade(id,midka,endka,fin);
+        String responce = subjectController.setOOPGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
     public void getCalculus2Grade(int id){
-        String response =controller.getCalculus2Grade(id);
+        String response =subjectController.getCalculus2Grade(id);
         System.out.println(response);
     }
     public void setCalculus2Grade(){
@@ -208,7 +214,7 @@ public class MyApplication {
         System.out.println("Final grade");
         int fin = sc.nextInt();
 
-        String responce = controller.setCalculus2Grade(id,midka,endka,fin);
+        String responce = subjectController.setCalculus2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
     public void setIntroductionToProgramming2Grade(){
@@ -221,11 +227,11 @@ public class MyApplication {
         System.out.println("Final grade");
         int fin = sc.nextInt();
 
-        String responce = controller.setIntroductionToProgramming2Grade(id,midka,endka,fin);
+        String responce = subjectController.setIntroductionToProgramming2Grade(id,midka,endka,fin);
         System.out.println(responce);
     }
     public void getIntroductionToProgramming2Grade(int id){
-        String response =controller.getIntroductionToProgramming2Grade(id);
+        String response =subjectController.getIntroductionToProgramming2Grade(id);
         System.out.println(response);
     }
     public void setPoliticalScienceGrade(){
@@ -238,11 +244,11 @@ public class MyApplication {
         System.out.println("Final grade");
         int fin = sc.nextInt();
 
-        String responce = controller.setPoliticalScienceGrade(id,midka,endka,fin);
+        String responce = subjectController.setPoliticalScienceGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
     public void getPoliticalScienceGrade(int id){
-        String response =controller.getPoliticalScienceGrade(id);
+        String response =subjectController.getPoliticalScienceGrade(id);
         System.out.println(response);
     }
     public void setDiscreteMathematicsGrade(){
@@ -255,11 +261,11 @@ public class MyApplication {
         System.out.println("Final grade");
         int fin = sc.nextInt();
 
-        String responce = controller.setDiscreteMathematicsGrade(id,midka,endka,fin);
+        String responce = subjectController.setDiscreteMathematicsGrade(id,midka,endka,fin);
         System.out.println(responce);
     }
     public void getDiscreteMathematicsGrade(int id){
-        String response =controller.getDiscreteMathematicsGrade(id);
+        String response =subjectController.getDiscreteMathematicsGrade(id);
         System.out.println(response);
     }
     public void LogForTeacher() {
@@ -268,7 +274,7 @@ public class MyApplication {
         System.out.println("Password: ");
         String userPassword = sc.next();
 
-        boolean responce = controller.loginForTeacher(userName, userPassword);
+        boolean responce = loginController.loginForTeacher(userName, userPassword);
         if (responce) {
             Nextstart();
         }else {
@@ -281,7 +287,7 @@ public class MyApplication {
         System.out.println("Password: ");
         String userPassword = sc.next();
 
-        boolean responce = controller.loginForAdmin(userName, userPassword);
+        boolean responce = loginController.loginForAdmin(userName, userPassword);
         if (responce) {
             administration();
         }else {
@@ -341,7 +347,7 @@ public class MyApplication {
 
         int id = Integer.parseInt(userPassword);
 
-        boolean responce = controller.login(userName, userPassword);
+        boolean responce = loginController.login(userName, userPassword);
 
         if (!responce) {
             System.out.println("Yedil Myrzabek");
@@ -357,12 +363,12 @@ public class MyApplication {
         System.out.println("Create password: ");
         String userPassword = sc.next();
 
-        boolean testReg = controller.testReg(userName,userPassword);
+        boolean testReg = loginController.testReg(userName,userPassword);
         if(testReg) {
             System.out.println("User already exists");
             System.out.println("Change nickname or password");
         }else {
-            String responce = controller.register(userName, userPassword);
+            String responce = loginController.register(userName, userPassword);
             System.out.println(responce);
         }
 
